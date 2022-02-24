@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% static "assets/img/products/" as imgurl %}
+
 
 <html lang="en">
 <head>
@@ -246,17 +248,19 @@
 			</div>
 
 			<div class="row">
+
+				{% for data in Pro1 %}
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="{% static 'assets/img/products/product-img-1.jpg' %}"alt=""></a>
+							<a href="single-product.html"><img src="{{imgurl}}{{data.Image}}"alt=""></a>
 						</div>
-						<h3>Strwaberry</h3>
-						<p class="product-price"><span>Per Kg</span> $85 </p>
+						<h3>{{data.Name}}</h3>
+						<p class="product-price"><span>Per Kg</span> {{data.Price}} </p>
 						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
-				
+				{% endfor %}
 			</div>
 		</div>
 	</div>
