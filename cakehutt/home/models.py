@@ -12,3 +12,6 @@ class cake(models.Model):
     Desc=models.TextField()
     Offer = models.FloatField()
     Offer2 = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.Name

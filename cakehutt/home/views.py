@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . models import cake
 
-product1 = cake()
+'''product1 = cake()
 product1.Name = 'Choco-Almond Fusion'
 product1.Price = 300
 product1.Image = 'Choco-Almond Fusion.jpg'
@@ -20,10 +20,10 @@ product3.Image = 'Coco-Sphere.jpg'
 product4 = cake()
 product4.Name = 'Strawberry Zaakki'
 product4.Price = 250
-product4.Image = 'Strawberry Zaakki.jpg'
+product4.Image = 'Strawberry Zaakki.jpg'''
 
-product=[product1,product2,product3,product4]
 
 def index(request):
-    return render(request,'index_2.html',{'Pro1': product})
+    product= cake.objects.all()
+    return render(request,'index_2.html',{'Pro': product})
     
