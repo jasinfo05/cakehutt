@@ -32,6 +32,59 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
 
+	<style>
+		.comment-box{
+		
+			width:600px;
+			height:400px;
+			background-color :rgb(232, 135, 235);
+			overflow: auto;
+			padding: 20px;
+			border: 3px solid rgb(188, 130, 241);
+			border-radius: 7px;
+		}
+		.comment-box p{
+			width:400px;
+			height:60px;
+			background-color: white;
+			border-radius: 10px;
+			padding-top:10px ;
+			border: 3px solid rgb(136, 133, 133);
+			box-shadow: 2px 4px #888888;
+			
+		}
+
+		.add-comment {
+			width:600px;
+			background-color: rgb(243, 131, 237);
+			border-radius: 10px;
+			border:3px solid #888888;
+			margin-top:20px;
+			padding-top: 5px;
+
+		}
+
+		.add-comment textarea{
+			width:400px;
+			position:relative;
+			right:28px;
+			border-radius: 30px;
+			padding-left: 20px;
+			background-color: rgb(248, 209, 222);
+			box-shadow:2px 4px #888888;
+		}
+
+		.add-comment button{
+			width:120px;
+			height:50px;
+			border-radius: 30px;
+			position:relative;
+			bottom:20px;
+			background-color: rgb(248, 209, 222);
+			box-shadow:2px 4px #888888;
+			border:None;
+		}
+	</style>
 </head>
 <body>
 	
@@ -136,6 +189,7 @@
 	</div>
 	<!-- end breadcrumb section -->
 
+	
 	<!-- single product -->
 	<div class="single-product mt-150 mb-150">
 		<div class="container">
@@ -178,6 +232,47 @@
 		</div>
 	</div>
 	<!-- end single product -->
+
+	<!-- more products -->
+    <div class="more-products mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="section-title">
+                        <h3><span class="orange-text">Comment</span> Section</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="comment-box">
+						
+						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
+						<p>Anu <strong> Good... </strong>    <small> 3/3/22</small></p>
+						<p>Arya <strong> Good... </strong>    <small> 2/3/22</small></p>
+						<p>Saranya <strong> Good... </strong> <small> 4/3/22</small></p>
+						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
+						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
+						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
+						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
+						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
+		
+						
+					</div>
+
+					<div class="add-comment">
+						<form>
+						<textarea></textarea>
+						<button type="Submit"> Comment </button>
+						</form>
+
+                </div>
+               
+               
+            </div>
+        </div>
+    </div>
+
 
 
 	<!-- logo carousel -->
