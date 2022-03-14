@@ -79,7 +79,7 @@
 								<li><a href="about.html">About</a></li>
 
 								{% if user.is_authenticated %}
-								<li><a href="customer/logout">Logout</a></li>
+								<li><a href="{% url 'logoutpage' %}">Logout</a></li>
 								{% else %}
 								
 								<li><a href="{% url 'loginpage' %}">Login</a></li>
@@ -113,6 +113,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 	<!-- end header -->
@@ -266,7 +267,7 @@
 						</div>
 						<h3>{{data.Name}}</h3>
 						<p class="product-price"><span>Per Kg</span> {{data.Price}} </p>
-					    <a href="product/details?id={{data.id}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					    <a href="product/details?id={{data.id}}" class="cart-btn"> View product</a>
 					</div>
 				</div>
 				{% endfor %}

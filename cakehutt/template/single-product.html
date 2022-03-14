@@ -113,16 +113,13 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="home.html">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul>
+								<li class="current-list-item"><a href="{% url 'home' %}">Home</a>
+								
 								</li>
 								<li><a href="about.html">About</a></li>
 					
 										{% if user.is_authenticated %}
-										<li><a href="customer/logout">Logout</a></li>
+										<li><a href="{% url 'logoutpage' %}">Logout</a></li>
 										{% else %}
 
 										<li><a href="{% url 'loginpage' %}">Login</a></li>
@@ -207,7 +204,7 @@
 						<br><p class="single-product-pricing"><span>Per Kg</span>₹ {{ofr}}</p>
 						
 						{% else %}
-						<h4>{{pro.Price}}</h4>
+						<h4>₹ {{pro.Price}}</h4>
 						{% endif %}
 
 						<p>{{pro.Desc}}</p>
@@ -246,27 +243,27 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="comment-box">
-						
-						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
-						<p>Anu <strong> Good... </strong>    <small> 3/3/22</small></p>
-						<p>Arya <strong> Good... </strong>    <small> 2/3/22</small></p>
-						<p>Saranya <strong> Good... </strong> <small> 4/3/22</small></p>
-						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
-						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
-						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
-						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
-						<p>Aju <strong> Good... </strong>    <small> 4/3/22</small></p>
-		
-						
+						{% if not pro.comments.all %}
+						<h5>No comments yet...</h5>
+						{% else %}
+							{% for cmt in pro.comments.all %}
+								<p> {{cmt.Name}} <strong>  {{cmt.Message}}  </strong> <small>  {{cmt.Date}}  </small></p>
+							{% endfor %}
+						{% endif %}
 					</div>
-
+					<font color=red>{{emg}}</font>
+					
+					{% if user.is_authenticated %}
 					<div class="add-comment">
-						<form>
-						<textarea></textarea>
+						<form method=POST action="{% url 'comments' %}">
+						{% csrf_token %}
+						<textarea name="cmt"></textarea>
+						<input type="hidden" name='Uname' value={{user.first_name}} >
+						<input type="hidden" name='Id' value={{pro.id}} >
 						<button type="Submit"> Comment </button>
 						</form>
-
-                </div>
+					</div>
+					{% endif %}
                
                
             </div>
