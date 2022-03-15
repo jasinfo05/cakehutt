@@ -13,10 +13,12 @@ def details(request):
         pid=request.POST['Id']
         comt=comment.objects.create(cakes_id=pid,Name=fnam,Message=cmnt)
         comt.save();
+
         #page loading values
         product=cake.objects.get(id=pid)
         off=product.Price*product.Offer/100
         offerprice=product.Price-off
+
         return render(request,'single-product.html',{'pro':product,'ofr':offerprice})
     else:
         ID=request.GET['id']

@@ -8,8 +8,18 @@ def login1(request):
         pname = request.POST['Pname']
         user = auth.authenticate(username=uname,password=pname)
         if user is not None:
+            obj=User.objects.get(username=user)
+        #cookies setting
+            print(obj.first_name)
+            print(obj.email)
+            print("hai",user.first_name)
             auth.login(request,user)
-            return redirect('/')
+            response=redirect('/')
+            response.set_cookie("name",user.first_name)
+            response.set_cookie("email",user.email)
+            response.set_cookie("number","123456")
+            return response
+            
         else:
             lmsg="Incorrect username or password!"
             return render(request,'login.html',{'Lmsg':lmsg})
@@ -19,8 +29,14 @@ def login1(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    response=redirect('/')
 
+    #cookies deleting
+
+    response.delete_cookie("name")
+    response.delete_cookie("email")
+    response.delete_cookie("number")
+    return response
 
 def register1(request):
     if request.method == 'POST':
